@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 // Rules
@@ -9,7 +9,7 @@ const jsRule = {
     'babel-loader',
     // 'eslint-loader',
   ],
-}
+};
 
 const ImagesRule = {
   test: /\.(png|jpg)$/,
@@ -25,9 +25,9 @@ const CSSRule = {
   test: /\.css$/,
   use: [
     { loader: 'style-loader' },
-    { loader: 'css-loader' }
-  ]
-}
+    { loader: 'css-loader' },
+  ],
+};
 
 const LESSRule = {
   test: /\.less$/,
@@ -66,24 +66,24 @@ const htmlPlugin = new HtmlWebPackPlugin({
 
 
 const output = {
-  path: path.join(__dirname, "/dist"),
-  filename: "main.js"
-}
+  path: path.join(__dirname, '/dist'),
+  filename: 'main.js',
+};
 
 module.exports = {
   entry: './src/index.js',
   output,
-  plugins: [ htmlPlugin ],
+  plugins: [htmlPlugin],
   module: {
     rules: [
       jsRule,
       CSSRule,
       SASSRule,
       LESSRule,
-      ImagesRule
-    ]
+      ImagesRule,
+    ],
   },
   devServer: {
     historyApiFallback: true,
-  }
-}
+  },
+};
