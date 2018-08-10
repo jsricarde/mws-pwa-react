@@ -205,21 +205,26 @@ class Search extends React.Component {
 
 
   parsedResults = results => results.map(result => ({
-    value: result.name,
+    value: result.id,
     label: result.name,
+    ...result,
   }))
 
   handleChange = name => (value) => {
+    console.log('change name', name);
+    console.log('change value', value);
     this.setState({
       [name]: value,
     });
+    // Call the reload function
+    const { relaodResult } = this.props;
+    relaodResult(value);
   };
 
   render() {
     const { classes, results } = this.props;
     const { single } = this.state;
     const parsedResults = this.parsedResults(results);
-    console.log('second', results);
     return (
       <div className={classes.root}>
         <NoSsr>

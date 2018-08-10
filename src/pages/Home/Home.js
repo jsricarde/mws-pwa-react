@@ -20,17 +20,22 @@ const styles = theme => ({
 class Home extends Component {
   state = { results: [] };
 
-
   componentDidMount() {
     const { results } = ('data' in data) ? data.data : [];
     this.setState({ results });
   }
 
+  relaodResult = (result) => {
+    console.log('relaodResult', result);
+    const results = (Array.isArray(result)) ? data.data.results : [result];
+    this.setState({ results });
+  }
+
   listComics = (comics, classes) => comics.map((comic) => {
     const parsedComic = comic;
-    parsedComic.image = `${comic.thumbnail.path}.${comic.thumbnail.extension}`;
+    parsedComic.image = `${parsedComic.thumbnail.path}.${parsedComic.thumbnail.extension}`;
     return (
-      <Grid key={comic.id} item xs={3} className={classes.paper}>
+      <Grid key={parsedComic.id} item xs={3} className={classes.paper}>
         <Comic {...parsedComic} />
       </Grid>
     );
@@ -39,11 +44,10 @@ class Home extends Component {
   render() {
     const { results } = this.state;
     const { classes } = this.props;
-    console.log('first result', results);
     return (
       <Grid container className={classes.root}>
         <Grid item md={12}>
-          <Search results={results} />
+          <Search results={results} relaodResult={this.relaodResult} />
         </Grid>
         {this.listComics(results, classes)}
       </Grid>
