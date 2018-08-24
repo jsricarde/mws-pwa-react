@@ -67,13 +67,13 @@ const htmlPlugin = new HtmlWebPackPlugin({
 
 const output = {
   path: path.join(__dirname, '/dist'),
+  publicPath: '/',
   filename: 'main.js',
 };
 
 module.exports = {
   entry: './src/index.js',
   output,
-  plugins: [htmlPlugin],
   module: {
     rules: [
       jsRule,
@@ -86,4 +86,5 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
   },
+  plugins: [htmlPlugin],
 };

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import {
+  Link,
+} from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -25,7 +28,7 @@ class Comic extends Component {
   }
 
   render() {
-    const { classes, image, name, description } = this.props;
+    const { id, classes, image, name, description } = this.props;
     return (
       <div>
         <Card className={classes.card}>
@@ -43,7 +46,7 @@ class Comic extends Component {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small" color="primary">
+            <Button component={Link} variant="contained" size="small" color="primary" to={`/characters/${id}`}>
               See comics
             </Button>
           </CardActions>
@@ -55,6 +58,7 @@ class Comic extends Component {
 
 Comic.propTypes = {
   classes: PropTypes.shape({}).isRequired,
+  id: PropTypes.number.isRequired,
   image: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,

@@ -217,9 +217,17 @@ class Search extends React.Component {
       [name]: value,
     });
     // Call the reload function
-    const { relaodResult } = this.props;
-    relaodResult(value);
+    const { reloadResult } = this.props;
+    reloadResult(value);
   };
+
+  handleOnKeyDown = (str) => {
+    console.log(str);
+    if (str.length > 2) {
+      const { searchByName } = this.props;
+      searchByName(str);
+    }
+  }
 
   render() {
     const { classes, results } = this.props;
@@ -233,6 +241,7 @@ class Search extends React.Component {
             options={parsedResults}
             components={components}
             value={single}
+            onInputChange={this.handleOnKeyDown}
             onChange={this.handleChange('single')}
             placeholder="Search a character (start with a)"
           />
@@ -243,6 +252,8 @@ class Search extends React.Component {
 }
 
 Search.propTypes = {
+  searchByName: PropTypes.func.isRequired,
+  reloadResult: PropTypes.func.isRequired,
   classes: PropTypes.shape({}).isRequired,
 };
 
