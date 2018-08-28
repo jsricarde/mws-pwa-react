@@ -1,0 +1,35 @@
+{
+  "name": "PWA Marvel Reader",
+  "short_name": "PWAMARVEL",
+  "icons": [
+    {
+      "src": "./src/assets/logo-128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "./src/assets/mstile-150x150.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "./src/assets/mstile-150x150.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    },
+    {
+      "src": "./src/assets/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./src/assets/android-chrome-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/characters/",
+  "display": "standalone",
+  "background_color": "#2a4e82",
+  "theme_color": "#ff0d2c"
+}
